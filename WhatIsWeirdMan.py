@@ -1,13 +1,12 @@
-
 import matplotlib.image as mpimg
 from os import listdir
 
-#please fetch files of matching the matcher
+#Please fetch files matching the matcher
 def getFiles(directory, filterPattern):
     onlyFiles = [f for f in listdir(directory) if filterPattern in f]
     return onlyFiles
 
-#Judges mask file
+#Judges mask file (God mode)
 def isWeird(imgPath):
     #assuming img is grayscale
     img = mpimg.imread(imgPath)
@@ -30,7 +29,7 @@ def isWeird(imgPath):
     #rectangles are weird
     return ((dx,dy), dx*dy==tot)
 
-#Exports weirdos fileid to file
+#Exports weirdo fileids to file
 def exportWeirdList(saveFileLoc, dirName, maskImgs):
     f = open(saveFileLoc,'w')
     for imgName in maskImgs:
